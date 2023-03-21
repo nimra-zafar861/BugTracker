@@ -1,0 +1,28 @@
+
+<h2>Sign Up </h2>
+<%= form_with model: @user do |u|%>
+    <%if @user.errors.any?%>
+    <div>
+    <ul>
+    <% @user.errors.full_messages.each do |m|%>
+    <li><%=m%></li>
+    <%end%></ul>
+    </p>
+    </div>
+    <%end%>
+<%=u.label:Name %><br>
+<%=u.text_field:name %><br>
+<%=u.label:Email%><br>
+<%=u.text_field:email%><br>
+<%=u.label:Password %><br>
+<%=u.password_field:password %><br>
+<%=u.label:ConfirmPassword %><br>
+<%=u.password_field:password_confirmation %><br>
+<%=u.label:User_type%><br>
+<%=u.select:user_type , options_for_select(User::USER_TYPE, selected:@user.user_type),{prompt:"select user type"}%><br><br>
+
+
+
+<%=u.submit:SignUp%>
+
+<%end%>
