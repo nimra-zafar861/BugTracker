@@ -4,4 +4,10 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+#   Character.create(name: "Luke", movie: movies.fivbshvt
+
+# p1=Project.create(name:"ror",description:"this is ror project")
+# u1=User.create(name:"hussain",email:"hussain@gmail.com",password:"122",password_confirmation:"122")
+
+# ProjectUser.create(project:p1,user:u1)
+

@@ -1,0 +1,8 @@
+<h2>description</h2>
+<p> Praoject name :<%= @projects.name%></p>
+<p>Description:  <%=@projects.description%></p>
+<p>Users:<%@projects.users.each do |u|%>
+<%=u.name%>
+<br>
+<%end%>
+<br>

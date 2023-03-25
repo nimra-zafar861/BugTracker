@@ -1,6 +1,15 @@
 class User < ApplicationRecord
     # attr_accessible :email, :password, :password_confirmation
-  USER_TYPE=['Manager','Q/A',"Developer"]
+  
+    has_many :project_users
+    has_many :projects ,through: :project_users
+    accepts_nested_attributes_for :project_users
+    has_many :bugs
+
+
+
+    # ?authentication
+    USER_TYPE=['Manager','Q/A',"Developer"]
     attr_accessor :password
     before_save :encrypt_password
     

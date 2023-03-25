@@ -1,0 +1,9 @@
+<h2>Description</h2>
+
+<p> User name :<%= @users.name%></p>
+<p> user email :<%= @users.email%></p>
+<p> project name :<%@users.projects.each  do |p| %>
+<%=p.name%>
+<%end%></p>
+
+

@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def new
     @user= User.new
   end
+  def index
+    @user=User.all
+  
+  end
   def create
     @user=User.create(user_params)
     if @user.save
@@ -12,6 +16,11 @@ class UsersController < ApplicationController
       render "new",status: :unprocessable_entity
     end
   end
+  def show
+    @users=User.find(params[:id])
+    
+  end
+
   helper_method :current_user
   private 
   def user_params

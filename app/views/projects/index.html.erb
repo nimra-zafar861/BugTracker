@@ -1,0 +1,49 @@
+<h1>Projects</h1>
+<%= form_tag(projects_path, method: "get") do %>
+  <%= label_tag(:q, "Search project:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+  
+<% end %>
+
+<br><br>
+<%= link_to "add new project" ,new_project_path%>
+<%if @projects.present?%>
+
+<% @projects.each do |p| %>
+ 
+ <div> <h2>
+    <%= link_to p.name,project_path(p) %>
+  </h2>
+   <h2>
+    <%= p.description%>
+  </h2>
+
+  <p> <%=link_to "edit" , edit_project_path(p)%></p>
+   <%= link_to "Delete", project_path(p) ,data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+
+  
+
+<%
+=begin%>
+ <ul>
+  <% @projects.project_users.each do |u| %>
+    <li>
+      <%= u.users.name %> 
+    </li>
+  <% end %>
+</ul> 
+<%
+=end%>
+
+</div>
+<%end%>
+
+<%else%>
+<br>
+ <%=render plain:"no record found"%>
+
+<% end %>

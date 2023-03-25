@@ -19,7 +19,12 @@
 <%=u.label:ConfirmPassword %><br>
 <%=u.password_field:password_confirmation %><br>
 <%=u.label:User_type%><br>
-<%=u.select:user_type , options_for_select(User::USER_TYPE, selected:@user.user_type),{prompt:"select user type"}%><br><br>
+<%=u.select(:user_type, options_for_select(User::USER_TYPE))%>
+<%
+=begin%>
+ <%=u.select:user_type , options_for_select(User::USER_TYPE),{prompt:"select user type"}%><br><br> 
+<%
+=end%>
 
 
 
