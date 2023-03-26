@@ -1,10 +1,9 @@
 class User < ApplicationRecord
     # attr_accessible :email, :password, :password_confirmation
-  
-    has_many :project_users
-    has_many :projects ,through: :project_users
-    accepts_nested_attributes_for :project_users
     has_many :bugs
+    has_many :project_users
+    has_many :projects ,through: :project_users ,dependent: :destroy
+    accepts_nested_attributes_for :project_users ,  :allow_destroy => true
 
 
 

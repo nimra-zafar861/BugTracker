@@ -10,4 +10,4 @@
 # u1=User.create(name:"hussain",email:"hussain@gmail.com",password:"122",password_confirmation:"122")
 
 # ProjectUser.create(project:p1,user:u1)
-
+Bug.create(title:"big1",bug_type:"simple")

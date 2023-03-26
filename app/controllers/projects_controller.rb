@@ -11,12 +11,15 @@ class ProjectsController < ApplicationController
 
   def show
     @projects = Project.find(params[:id])
-    
+   
   end
 
   def new
     @projects = Project.new
+
     @projects.project_users.new
+    # @project=Project.new
+    @projects.bugs.new
     end
 
   def create
@@ -44,11 +47,14 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy 
     @projects = Project.find(params[:id])
-    @projects.destroy
+    @user = @projects.users.find(params[:user_id])
 
-    redirect_to project_path
+    if @user
+       @projects.users.destroy(@user)
+       redirect_to project_path
+    end  
   end
 
   protected
