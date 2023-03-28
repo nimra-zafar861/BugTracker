@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
 
   def new
     @user= User.new
@@ -11,8 +12,8 @@ class UsersController < ApplicationController
     @user=User.create(user_params)
     if @user.save
       
-    redirect_to users_path
-    else 
+    redirect_to projects_path
+    else
       render "new",status: :unprocessable_entity
     end
   end
@@ -21,15 +22,12 @@ class UsersController < ApplicationController
     
   end
 
-  helper_method :current_user
-  private 
+ 
+  public
   def user_params
     params.require(:user).permit(:name,:email,:password ,:password_confirmation ,:user_type)
   end 
-  
-  def current_user
-  @current_user ||= User.find(session[:user_id]) if session[:user_id]
-end
+ 
 
 
 end

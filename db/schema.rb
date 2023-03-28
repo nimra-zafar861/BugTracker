@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_26_040049) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_081225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bugs", force: :cascade do |t|
     t.string "title"
-    t.string "b_type"
     t.string "status"
-    t.string "scrennshot"
+    t.string "b_type"
+    t.string "screenshot"
     t.bigint "user_id", null: false
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_040049) do
     t.string "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
   end
 
   add_foreign_key "bugs", "projects"

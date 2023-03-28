@@ -1,7 +1,6 @@
 <%= form_with model:projects do |form| %>
 <% if projects.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(projects.errors.count, "error") %> prohibited this project from being saved:</h2>
+   <div>
       <ul>
       <% projects.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -16,16 +15,7 @@
 
  <%=pu_form.collection_select(:user_id, User.all, :id, :name, prompt: true)%>  
 
- <%
-=begin%>
- <%= pu_form.collection_check_boxes :user_id, User.all, :id, :name  do |b| %>
-    <li>
-      <%= b.check_box %>
-      <%= b.label %>
-    </li>
-<% end %> 
-<%
-=end%>
+
   <% end %>
   <%= form.submit %>
 <% end %>

@@ -1,11 +1,11 @@
 class User < ApplicationRecord
     # attr_accessible :email, :password, :password_confirmation
-    has_many :bugs
+    has_many :bugs ,as: :Bugable
     has_many :project_users
-    has_many :projects ,through: :project_users ,dependent: :destroy
+    has_many :projects ,through: :project_users
     accepts_nested_attributes_for :project_users ,  :allow_destroy => true
 
-
+    enum role: {seller: 0, buyer: 1, admin: 2}
 
     # ?authentication
     USER_TYPE=['Manager','Q/A',"Developer"]

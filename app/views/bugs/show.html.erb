@@ -1,0 +1,30 @@
+<h2>Bugs</h2>
+
+ <div>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @bugs.title%>
+
+  </p>
+  <p>
+    <strong>Bug_type:</strong>
+    <%= @bugs.b_type %>
+  </p> 
+
+ <%
+=begin%>
+ <p>
+    <%= @bugs.projects.each do |u| %>
+    <%u.name%>
+    <%end%>
+  </p>   
+<%
+=end%>
+
+<p>
+<%=link_to "edit " , edit_bug_path%>
+<%=link_to "delete" , bug_path(@bugs) data:{}%>
+</p>
+
+</div>

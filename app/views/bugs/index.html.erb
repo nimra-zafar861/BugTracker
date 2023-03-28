@@ -1,0 +1,6 @@
+<h1> Bugs
+</h1>
+<% @bugs.each do |b|%>
+<%= link_to b.title,bug_path(b)%>
+<br><br>
+<%end%>

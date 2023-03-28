@@ -1,42 +1,27 @@
 <h2>description</h2>
 <p> Praoject name :<%= @projects.name%></p>
+
 <p>Description:  <%=@projects.description%></p>
 <p>Users:<%@projects.users.each do |u|%>
-<%=u.name%>
+<%= link_to u.name , user_path(u)%>
+<%=link_to "remove User"%>
 <br>
 <%end%>
 <br>
 <h2>Add a Bug</h2>
-<%= form_with model: [ @projects, @projects.bugs.build ] do |form| %>
-  <p>
-    <%= form.label :Title %><br>
-    <%= form.text_field :title%>
-    </p>
-  <p>
-    <%= form.label :Bug_type%><br>
-    <%= form.text_area :b_type %>
-  </p>
-  <p>
-  
-    <%= form.submit %>
-  </p>
 
-<% end %>
+<%=link_to "add bug", new_bug_path%>
 
-  
+   
 
- <h2>Bugs</h2>
-<% @projects.bugs.each do |bug| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= bug.title%>
-  </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= bug.b_type %>
-  </p>
-<% end %> 
+
+
+
+
+
+
+
 
 
 

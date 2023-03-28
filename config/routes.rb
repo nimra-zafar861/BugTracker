@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   root "users#new"
   resources:users
   resources:sessions
-  resources:projects do 
+  resources:projects
     resources:bugs
-  end
+
  # Defines the root path route ("/")
   # root "articles#index"
 end

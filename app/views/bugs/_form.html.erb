@@ -1,0 +1,21 @@
+
+<%= form_with model: @bugs do |form| %>
+  <p>
+    <%= form.label :Title %><br>
+    <%= form.text_field :title%>
+    </p>
+  <p>
+    <%= form.label :Bug_type%><br>
+    <%= form.select:b_type ,options_for_select(["Feature","Bug"])%>
+  </p
+  ><%= form.label :status%><br>
+    <%= form.select :status ,options_for_select(["completed","new" ,"started"]) %>
+  
+  <p>
+  <%= form.label :project_id%>
+  <%= form.collection_select(:project_id , Project.all, :id, :name, prompt: true) %>
+
+  
+    <%= form.submit %>
+  </p>
+  <%end%>

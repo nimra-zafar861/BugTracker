@@ -2,16 +2,16 @@
 
 one:
   title: MyString
-  b_type: MyString
   status: MyString
-  scrennshot: MyString
+  b_type: MyString
+  screenshot: MyString
   user: one
   project: one
 
 two:
   title: MyString
-  b_type: MyString
   status: MyString
-  scrennshot: MyString
+  b_type: MyString
+  screenshot: MyString
   user: two
   project: two

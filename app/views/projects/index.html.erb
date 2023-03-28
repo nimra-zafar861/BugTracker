@@ -1,3 +1,17 @@
+<% if current_user %>
+    Logged in as <%= current_user.email %>
+    <%= link_to "Log out", log_out_path %>
+      
+   
+      
+      
+
+  <% else %>
+    <%= link_to "Sign up", sign_in_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+
+  <%=flash[:error]%>
 <h1>Projects</h1>
 <%= form_tag(projects_path, method: "get") do %>
   <%= label_tag(:q, "Search project:") %>
@@ -7,7 +21,10 @@
 <% end %>
 
 <br><br>
+
+<%if can? :create ,@projects%>
 <%= link_to "add new project" ,new_project_path%>
+<%end%>
 <%if @projects.present?%>
 
 <% @projects.each do |p| %>
@@ -19,11 +36,25 @@
     <%= p.description%>
   </h2>
 
-  <p> <%=link_to "edit" , edit_project_path(p)%></p>
+ 
+
+ <% if can? :update , @projects %> 
+
+
+
+ <p> <%=link_to "edit" , edit_project_path(p)%></p>
+   <%end%>
+    <% if can? :destroy , @projects %>
    <%= link_to "Delete", project_path(p) ,data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %>
+                  } %> 
+
+
+
+ <%end%>   
+
+
 
   
 
