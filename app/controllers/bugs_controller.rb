@@ -20,7 +20,7 @@ class BugsController < ApplicationController
 
    end
         def bug_params
-          params.require(:bug).permit(:title, :b_type ,:status)
+          params.require(:bug).permit(:title, :b_type ,:status ,:project_id,:user_id)
         end
   
         def edit
@@ -28,6 +28,14 @@ class BugsController < ApplicationController
           end
         
           def update
+            @bugs=Bug.update(bug_params)
+            redirect_to bug_path
        
           end
+      def destroy 
+        @bugs=Bug.find(params[:id])
+        @bugs.destroy
+        redirect_to bugs_path
+      end
+
 end

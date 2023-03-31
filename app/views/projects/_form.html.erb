@@ -8,13 +8,20 @@
       </ul>
     </div>
   <% end %>
-  <%= form.text_field :name, placeholder: "Project Title" %>
-   <%= form.text_field :description, placeholder: "Project Description" %>
-  <%= form.fields_for :project_users do |pu_form| %>
+ <%= form.label :Project_Name%><br>
+  <%= form.text_field :name, placeholder: "Project Title" %><br><br>
+   <%= form.label :Project_Description%><br>
+   <%= form.text_field :description, placeholder: "Project Description" %><br>
+ 
+  <%= form.fields_for :project_users do |pu_form| %><br><br>
 
 
- <%=pu_form.collection_select(:user_id, User.all, :id, :name, prompt: true)%>  
-
+ <%=pu_form.collection_select(:user_id, User.all, :id, :name, prompt:"select Project")%>  <br><br>
+<%
+=begin%>
+ <%= link_to_add_fields 'Add Product Variant', form, :user_id%> 
+<%
+=end%>
 
   <% end %>
   <%= form.submit %>

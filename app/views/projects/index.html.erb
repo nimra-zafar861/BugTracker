@@ -1,29 +1,22 @@
 <% if current_user %>
     Logged in as <%= current_user.email %>
     <%= link_to "Log out", log_out_path %>
-      
-   
-      
-      
-
   <% else %>
     <%= link_to "Sign up", sign_in_path %> or
     <%= link_to "log in", log_in_path %>
   <% end %>
-
   <%=flash[:error]%>
-<h1>Projects</h1>
-<%= form_tag(projects_path, method: "get") do %>
+  <div class="container">
+<h1 class="text-center text-primary">Projects</h1>
+<div class="text-center"><%= form_tag(projects_path, method: "get") do %>
   <%= label_tag(:q, "Search project:") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
-  
+  </div>  
 <% end %>
-
 <br><br>
-
 <%if can? :create ,@projects%>
-<%= link_to "add new project" ,new_project_path%>
+<%= link_to "add new project" ,new_project_path ,class:"btn btn-primary"%><br><br>
 <%end%>
 <%if @projects.present?%>
 
@@ -32,49 +25,20 @@
  <div> <h2>
     <%= link_to p.name,project_path(p) %>
   </h2>
-   <h2>
-    <%= p.description%>
-  </h2>
-
- 
-
  <% if can? :update , @projects %> 
-
-
-
- <p> <%=link_to "edit" , edit_project_path(p)%></p>
+ <p> <%=link_to "edit" , edit_project_path(p),class:"btn btn-success"%>
    <%end%>
     <% if can? :destroy , @projects %>
    <%= link_to "Delete", project_path(p) ,data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %> 
-
-
-
+                  } ,class:"btn btn-danger"%> 
+</p>
  <%end%>   
-
-
-
-  
-
-<%
-=begin%>
- <ul>
-  <% @projects.project_users.each do |u| %>
-    <li>
-      <%= u.users.name %> 
-    </li>
-  <% end %>
-</ul> 
-<%
-=end%>
-
 </div>
 <%end%>
-
 <%else%>
 <br>
  <%=render plain:"no record found"%>
-
 <% end %>
+</div>

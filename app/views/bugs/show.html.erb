@@ -11,20 +11,22 @@
     <strong>Bug_type:</strong>
     <%= @bugs.b_type %>
   </p> 
-
- <%
-=begin%>
  <p>
-    <%= @bugs.projects.each do |u| %>
-    <%u.name%>
-    <%end%>
+<strong>Belongs_to project:</strong>
+    <%= @bugs.project.name %>
   </p>   
-<%
-=end%>
 
+ <p>
+ <strong>Belongs_to creater:</strong>
+    <%= @bugs.user.name %>
+  </p>  
 <p>
-<%=link_to "edit " , edit_bug_path%>
-<%=link_to "delete" , bug_path(@bugs) data:{}%>
+<%=link_to "edit " , edit_bug_path ,class:"btn btn-success"%>
+ <%=link_to "delete" , bug_path(@bugs) ,data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  },class:"btn btn-danger" %> 
+
 </p>
 
 </div>

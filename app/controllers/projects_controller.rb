@@ -6,7 +6,8 @@ class ProjectsController < ApplicationController
       if params[:q].present?
       @projects=Project.where("name = ?",params[:q])
       else
-         @projects = Project.all
+        # @project=Project.all
+        @projects = Project.accessible_by(current_ability)
       end
     #  @projects= @projects.project_users
 
@@ -70,9 +71,8 @@ class ProjectsController < ApplicationController
     unauthorize! if cannot? :destroy ,@user
 
   end
-  def destroy_user 
+  def destroyUser 
     @projects = Project.find(params[:id]) 
-   
     @user = @projects.users
     @projects.users.destroy(@user)
   end

@@ -1,21 +1,30 @@
 
-<%= form_with model: @bugs do |form| %>
-  <p>
+    <%= form_with model: @bugs do |form| %>
+      <p>
     <%= form.label :Title %><br>
     <%= form.text_field :title%>
     </p>
-  <p>
-    <%= form.label :Bug_type%><br>
-    <%= form.select:b_type ,options_for_select(["Feature","Bug"])%>
-  </p
-  ><%= form.label :status%><br>
-    <%= form.select :status ,options_for_select(["completed","new" ,"started"]) %>
-  
-  <p>
-  <%= form.label :project_id%>
-  <%= form.collection_select(:project_id , Project.all, :id, :name, prompt: true) %>
+
+        <div class="field">
+            <%= form.label :typeOf, class:"form-control" %><br />
+            <%= form.select(:typeOf, Bug.typeOfs.keys.map {|role| [role.titleize,role]}) %>
+          </div>
+
+      <div class="field">
+        <%= form.label :status_is, class:"form-control" %><br />
+        <%= form.select(:status_is, Bug.status_is.keys.map {|role| [role.titleize,role]}) %>
+      </div> 
+      <p>
+            <%= form.label :Project%><br>
+            <%= form.collection_select(:project_id , Project.all, :id, :name, prompt: "Selcect Project") %><br>
+            <br>
+            <%= form.label :Creater%><br>
+            <%= form.collection_select(:user_id , User.all, :id, :name, prompt: "Selcet User/Creater") %><br><br>
+            <%= form.submit %>
+      </p>
+
+   <%end%>
+   
+
 
   
-    <%= form.submit %>
-  </p>
-  <%end%>

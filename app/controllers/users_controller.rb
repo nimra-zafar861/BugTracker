@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  skip_authorization_check :only => [:create]
 
   def new
     @user= User.new
@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name,:email,:password ,:password_confirmation ,:user_type)
   end 
- 
+  helper_method :current_user
+  public
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
 
 
 end

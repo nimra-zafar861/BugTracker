@@ -1,16 +1,28 @@
-<h2>description</h2>
+<h2> Project Details</h2>
 <p> Praoject name :<%= @projects.name%></p>
 
 <p>Description:  <%=@projects.description%></p>
 <p>Users:<%@projects.users.each do |u|%>
-<%= link_to u.name , user_path(u)%>
-<%=link_to "remove User"%>
+<%= link_to u.name , user_path(u)%><br>
+<%=link_to "delete user" , destroyUser_projects_path(u),data:{
+    turbo_method:"delete",
+    turbo_confirm: "Are you sure?"
+    
+},class:"btn btn-danger"%>
 <br>
 <%end%>
+<p class="text-danger">Bugs:
+</p>
+
+<%@projects.bugs.each do |b|%>
+<%= link_to b.title , bug_path(b)%>
+<br>
+<%end%>
+
 <br>
 <h2>Add a Bug</h2>
 
-<%=link_to "add bug", new_bug_path%>
+<%=link_to "add bug", new_bug_path ,class:"bt btn-primary"%>
 
    
 
